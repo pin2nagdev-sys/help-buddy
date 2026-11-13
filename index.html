@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>HELP BUDDY - Bharat Ki Help</title>
+<style>
+*{box-sizing:border-box;font-family:system-ui}
+body{margin:0;background:#FFF8E1;padding:12px}
+.card{background:#fff;padding:14px;border-radius:16px;margin-bottom:12px;box-shadow:0 2px 10px #0001}
+h1{margin:0;font-size:22px}
+input,select{width:100%;padding:12px;margin:6px 0;border:1px solid #ddd;border-radius:10px}
+.btn{width:100%;padding:14px;border:none;border-radius:30px;font-weight:900;cursor:pointer;margin-top:8px;display:block;text-align:center;text-decoration:none}
+.green{background:#0f9d6d;color:#fff}.red{background:#e11d48;color:#fff}.black{background:#111;color:#fff}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.grid a{padding:12px;background:#fff;border:1px solid #ddd;border-radius:12px;text-align:center;text-decoration:none;color:#000;font-weight:900;font-size:13px}
+.hide{display:none}
+.badge{font-size:11px;background:#D6F5E2;color:#0f7a4a;padding:4px 10px;border-radius:20px;font-weight:900}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="card" style="text-align:center">
+<span class="badge">🛟 HELP BUDDY</span>
+<h1>HELP BUDDY - Bharat Ki Help 😇</h1>
+<p style="font-size:12px;color:#888">Scan Karo - Help Karo - Jaan Bachao</p>
+<button onclick="setLang('hi')" style="padding:8px 14px;border-radius:20px;background:#111;color:#fff;border:none;font-weight:900">हिंदी</button>
+<button onclick="setLang('mr')" style="padding:8px 14px;border-radius:20px;background:#eee;border:none;font-weight:900">मराठी</button>
+<button onclick="setLang('en')" style="padding:8px 14px;border-radius:20px;background:#eee;border:none;font-weight:900">English</button>
+<p id="langText" style="font-size:13px">नमस्ते! ये QR किसी की गाड़ी का है। मदद के लिए नीचे बटन दबाएं।</p>
+</div>
+
+<!-- OPEN EMERGENCY -->
+<div class="card" style="border:2px solid red;text-align:center;background:#FFF0F0">
+<b style="color:red;font-size:16px">🚨 CRITICAL EMERGENCY?</b><br><span style="font-size:12px">Pehle 112 ko CALL karo!</span><br>
+<a href="tel:112" class="btn red" style="font-size:20px">📞 112 - EMERGENCY CALL</a>
+<div class="grid" style="margin-top:10px">
+<a href="tel:100">👮 100<br><span style="font-weight:400;font-size:11px">Police</span></a>
+<a href="tel:1033">🛣️ 1033<br><span style="font-weight:400;font-size:11px">Highway</span></a>
+<a href="tel:108">🚑 108<br><span style="font-weight:400;font-size:11px">Ambulance</span></a>
+<a href="tel:101">🔥 101<br><span style="font-weight:400;font-size:11px">Fire</span></a>
+</div>
+<a href="tel:7420969668" class="btn black">🛟 HELP BUDDY - 7420969668</a>
+</div>
+
+<!-- QR PROFILE - PUBLIC -->
+<div class="card">
+<b>🚗 Vehicle Contact - 🟢 Public</b><br><br>
+<b>Owner:</b> Ramesh - HB-0001<br>
+<b>Gaadi:</b> MH12AB1234 - Car<br>
+<b>Public Contact:</b> 9876500000<br><br>
+<a href="tel:9876500000" class="btn green">📞 Call Owner</a>
+<button class="btn" style="background:#E8F5E9;color:#0f9d6d" onclick="waOwner()">💬 WhatsApp - Gaadi Hata Lo</button>
+<p style="font-size:11px;color:#888;text-align:center">No Parking / Parking Block ke liye - Family ko pata nahi chalega</p>
+<button class="btn red" onclick="showEmergency()">🚨 Emergency Hai - Yaha Dabao</button>
+</div>
+
+<!-- EMERGENCY REPORT -->
+<div id="emg" class="card hide" style="border:1px solid #FFB3B3">
+<b style="color:#e11d48;font-size:18px">🚨 Emergency Report</b><br>
+<span style="font-size:12px">HB-0001 - MH12AB1234 - Scan se Alert NAHI jayega, Confirm se jayega</span><br><br>
+<label><b>1. Aapka Naam *</b></label><input id="rName" placeholder="Apna poora naam">
+<label><b>2. Aapka Mobile + OTP *</b></label><input id="rMob" placeholder="10 digit" maxlength="10">
+<button onclick="sendOTP()" style="padding:10px 16px;border-radius:20px;background:#111;color:#fff;border:none;font-weight:900">📩 OTP Bhejo - Demo 1234</button>
+<input id="rOTP" placeholder="4 Ank OTP">
+<button onclick="verifyOTP()" style="padding:10px 16px;border-radius:20px;background:#0f9d6d;color:#fff;border:none;font-weight:900">✅ Verify</button><br><br>
+<label><b>3. Location *</b></label><input id="rLoc" placeholder="Accident ka address - GPS na chale to haath se likho">
+<button onclick="getLoc()" style="padding:8px 14px;border-radius:20px;background:#E3F2FD;border:none;font-weight:900">📍 Get Current Location</button>
+<input id="mapLink" placeholder="Google Maps Link - Auto banega" readonly>
+<input id="navLink" placeholder="Navigation Link - Ek Click Me Pahuncho" readonly><br>
+<label><b>4. Emergency Kis Tarah Ki Hai? *</b></label><br>
+<label><input type="radio" name="etype" value="Vehicle Accident" checked> Vehicle Accident</label><br>
+<label><input type="radio" name="etype" value="Vehicle Damage"> Vehicle Damage</label><br>
+<label><input type="radio" name="etype" value="Medical Emergency"> Medical Emergency</label><br>
+<label><input type="radio" name="etype" value="Other"> Other</label><br><br>
+<label><b>5. Photo - OPTIONAL - Selfie Mat Lo</b></label><input type="file" accept="image/*"><br>
+<button class="btn red" onclick="submitReport()">🚨 Emergency Report Bhejo - Family + HELP BUDDY Ko</button>
+<div style="background:#E8F5E9;padding:12px;border-radius:12px;text-align:center;margin-top:10px">
+<b>🔒 Family Secure Call</b><br><span style="font-size:12px">Number nahi dikhega - Sirf Button</span><br>
+<button class="btn green" onclick="secureCall()">📞 Family Ko Secure Call Karo</button>
+<p style="font-size:11px">Priority: 1. Mummy/Papa → 2. Wife/Husband → 3. Bhai/Behen</p>
+</div>
+</div>
+
+<!-- ADMIN PANEL -->
+<div class="card">
+<b>🛟 Admin Panel - HELP BUDDY - 7420969668</b><br><br>
+<input placeholder="Naya Customer - Naam + Photo">
+<input placeholder="Gaadi No - MH12AB1234">
+<input placeholder="Mobile + Family - 3 Priority">
+<button class="btn green" onclick="alert('✅ Customer Register! Unique QR - HB-0002 ban gaya! PDF Download karo!')">✅ Register + Unique QR Banao</button>
+<button class="btn" style="background:#E3F2FD" onclick="alert('📄 PDF Download ho raha hai - Car / Bike / Cycle Sticker')">📄 QR Sticker PDF Download</button>
+<button class="btn" style="background:#D6F5E2" onclick="alert('💬 WhatsApp par QR bhej diya!')">💬 WhatsApp Par QR Bhejo</button>
+<div style="background:#FFF3CD;padding:10px;border-radius:10px;font-size:12px;margin-top:10px">
+<b>📅 Validity - 365 Din</b><br>HB-0001 - 340 Din Bache ✅<br>HB-0002 - 15 Din Bache ⚠️ - Renewal Reminder Bhejo
+</div>
+</div>
+
+<div style="text-align:center;font-size:11px;color:#888;padding:10px">HELP BUDDY - Demo Website - Asli WhatsApp / Calling Live hone ke baad chalega - Jaan Bachana Hi Dharm Hai 😇</div>
+
+<script>
+let otpOk=false;
+function setLang(l){let t={hi:'नमस्ते! ये QR किसी की गाड़ी का है। मदद के लिए नीचे बटन दबाएं।',mr:'नमस्कार! हा QR कोणाच्या तरी गाडीचा आहे. मदतीसाठी खालील बटण दाबा.',en:'Hello! This QR belongs to someone vehicle. Tap below to help.'};document.getElementById('langText').innerText=t[l];}
+function showEmergency(){document.getElementById('emg').classList.remove('hide');window.scrollTo(0,document.getElementById('emg').offsetTop);}
+function waOwner(){window.open('https://wa.me/919876500000?text='+encodeURIComponent('Namaste! Aapki gaadi MH12AB1234 No Parking me hai / Parking block kar rahi hai, please hata lijiye - HELP BUDDY'));}
+function sendOTP(){alert('📩 Demo OTP: 1234 - Live me asli OTP SMS se jayega');}
+function verifyOTP(){if(document.getElementById('rOTP').value==='1234'){otpOk=true;alert('✅ OTP Verify!');}else alert('❌ Galat OTP');}
+function getLoc(){
+ document.getElementById('rLoc').value=new Date().toLocaleString('en-IN')+' - Location';
+ if(navigator.geolocation){navigator.geolocation.getCurrentPosition(p=>{let lat=p.coords.latitude,lng=p.coords.longitude;document.getElementById('mapLink').value='https://maps.google.com/?q='+lat+','+lng;document.getElementById('navLink').value='https://www.google.com/maps/dir/?api=1&destination='+lat+','+lng;alert('✅ Location Mil Gayi! Map + Navigation Link ban gaya!');},()=>alert('⚠️ GPS OFF - Manual Address likh do - Report rukegi nahi!'));}else alert('GPS nahi hai - Manual likh do');
+}
+function submitReport(){
+ let n=document.getElementById('rName').value,m=document.getElementById('rMob').value,l=document.getElementById('rLoc').value;
+ if(!n||m.length!=10||!l){alert('❌ Naam + Mobile (10 digit) + Location bharo!');return;}
+ if(!otpOk){alert('❌ Pehle OTP Verify karo!');return;}
+ if(!confirm('Confirm karo? Family + HELP BUDDY ko Alert jayega!'))return;
+ let et=document.querySelector('input[name=etype]:checked').value;
+ let msg='🚨 EMERGENCY - HB-0001 - MH12AB1234\nType: '+et+'\nLocation: '+l+'\nMap: '+document.getElementById('mapLink').value+'\nNav: '+document.getElementById('navLink').value+'\nReporter: '+n+' - '+m;
+ window.open('https://wa.me/919876500001?text='+encodeURIComponent(msg));
+ alert('✅ Report Bhej Diya! Family Priority 1 ko gaya! Admin me Status: OPEN!');
+}
+function secureCall(){alert('📞 Secure Call ja raha hai... Family ka number screen pe NAHI dikhega - Privacy Bach Gayi! Live me Telephony se hoga.');}
+</script>
+</body>
+</html>
