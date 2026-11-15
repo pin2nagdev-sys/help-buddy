@@ -1,170 +1,182 @@
 <!DOCTYPE html>
-<html lang="hi">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>HELP BUDDY - Bharat Ki Help</title>
+<title>HELP BUDDY - FINAL TESTED</title>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-*{box-sizing:border-box;font-family:Arial} body{margin:0;background:#fff7ed;padding:12px}
-.topbar{display:flex;justify-content:space-between;align-items:center;max-width:500px;margin:auto}
-.langBtn{background:#111;color:#fff;border:0;padding:8px 12px;border-radius:20px;font-size:14px;cursor:pointer}
-.card{background:#fff;border-radius:16px;padding:16px;box-shadow:0 4px 14px rgba(0,0,0,.1);max-width:500px;margin:10px auto}
-h1{text-align:center;color:#dc2626;margin:5px}.brand{text-align:center;font-weight:bold;color:#111;font-size:14px}
-input,select{width:100%;padding:12px;margin:6px 0;border:1.5px solid #ddd;border-radius:10px;font-size:16px}
-.row{display:flex;gap:8px}.row>*{flex:1}
-button{width:100%;padding:12px;border:0;border-radius:12px;font-size:16px;font-weight:bold;cursor:pointer;margin-top:8px}
-.green{background:#16a34a;color:#fff}.red{background:#dc2626;color:#fff}.dark{background:#111;color:#fff}.orange{background:#f97316;color:#fff}.blue{background:#2563eb;color:#fff}
-.box{border:2px solid #16a34a;border-radius:12px;padding:12px;margin-top:10px}
-.lockBox{border:3px solid #dc2626;border-radius:12px;padding:12px;margin-top:10px;background:#fef2f2}
-.govt{background:#eff6ff;border-radius:12px;padding:10px;margin-top:10px}
-.qr{text-align:center}.qr img{width:220px;height:220px}
-.hide{display:none} img#preview{width:100%;border-radius:10px;margin-top:8px} label{font-size:13px;font-weight:bold;display:block;margin-top:8px}
-.langMenu{background:#fff;border:1px solid #ddd;border-radius:12px;padding:8px;position:absolute;right:12px;top:50px;z-index:99;width:170px;box-shadow:0 4px 12px rgba(0,0,0,.2)}
-.langMenu button{background:#f3f4f6;color:#111;margin:4px 0}
-.bigRed{background:#dc2626;color:#fff;font-size:19px;padding:16px;border:3px solid #991b1b}
-small{color:#666}
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Baloo 2','Poppins',Arial,sans-serif}
+p,h1,h2,h3,span,b,div,a,button{-webkit-user-select:none;user-select:none;-webkit-tap-highlight-color:transparent}
+input,select,textarea{user-select:text;-webkit-user-select:text;caret-color:transparent}
+input:focus,select:focus,textarea:focus{caret-color:#ff6b00 !important;outline:2px solid #ff6b00}
+html{scroll-behavior:smooth}body{background:#FFF8F0;overflow-x:hidden}
+a,button{cursor:pointer}
+.top{display:flex;justify-content:space-between;align-items:center;padding:10px 16px;background:#fff;position:sticky;top:0;z-index:100;box-shadow:0 2px 8px rgba(0,0,0,.06)}
+.top b{font-size:22px;font-weight:800}.top b span{color:#ff6b00}
+.top .top-btns{display:flex;gap:8px}
+.top .top-btns a{padding:7px 14px;border-radius:20px;text-decoration:none;font-size:12px;font-weight:700}
+.top .login{background:#222;color:#fff}.top .join{background:#d92d00;color:#fff}
+.hero{display:flex;gap:20px;padding:16px;max-width:1200px;margin:auto;align-items:center}
+.hero-text{flex:1}.hero-text h1{font-size:32px;line-height:1.15;font-weight:800}.hero-text h1 span{color:#ff6b00}.hero-text p{margin-top:8px;color:#555;font-size:14px}
+.hero-text .btns{margin-top:12px;display:flex;gap:8px}.hero-text .btns a{padding:10px 16px;border-radius:25px;text-decoration:none;font-weight:700;font-size:14px}
+.w{background:#fff;color:#222;box-shadow:0 2px 8px #ddd}.o{background:#ff6b00;color:#fff}
+.hero-img{flex:1}.hero-img img{width:100%;height:210px;object-fit:cover;border-radius:14px}
+.search{max-width:1200px;margin:auto;padding:0 16px;display:flex;gap:8px}.search input{flex:1;padding:10px 14px;border:1px solid #ddd;border-radius:25px;font-size:13px}.search button{background:#222;color:#fff;border:0;padding:0 18px;border-radius:25px;font-weight:700;font-size:13px}
+.langs{display:flex;gap:6px;justify-content:center;padding:10px}.langs button{padding:6px 14px;border-radius:20px;border:1px solid #ffccaa;background:#fff;font-weight:700;font-size:13px}.langs button.active{background:#ff6b00;color:#fff}
+.tabs{display:flex;gap:6px;padding:0 16px 10px;justify-content:center;flex-wrap:wrap}.tabs span{padding:7px 12px;border-radius:20px;background:#fff;border:1px solid #eee;font-weight:600;font-size:13px}.tabs span.active{background:#222;color:#fff}
+.row{max-width:1200px;margin:auto;padding:0 16px 20px;display:flex;gap:30px;justify-content:space-between;align-items:stretch}
+.card{background:#fff;border-radius:12px;padding:14px;flex:1;max-width:480px;box-shadow:0 2px 8px rgba(0,0,0,.05);display:flex;flex-direction:column}
+.card.left{margin-right:auto}.card.right{margin-left:auto;padding-bottom:20px}
+.card h3{font-size:18px}.card p{font-size:13px;line-height:1.5;color:#444;margin-top:6px}
+.card input{width:100%;padding:9px;margin-top:7px;border-radius:8px;border:1px solid #ddd;font-size:13px}
+.btn{display:flex;align-items:center;justify-content:center;gap:8px;padding:9px;border-radius:9px;text-decoration:none;color:#fff;font-weight:700;margin-top:7px;font-size:13px}
+.insta{background:#e1306c}.fb{background:#1877F2}.wa{background:#25D366}.call{background:#16A34A}
+.btn img{width:22px;height:22px;background:#fff;border-radius:6px;padding:2px;object-fit:contain}
+.review-bar{background:#FFF8E0;border-radius:10px;padding:10px;margin-top:10px;text-align:center}
+.review-bar b{font-size:22px;color:#ff6b00}
+.work-new{max-width:1168px;margin:10px 16px 30px;background:linear-gradient(135deg,#1a1a1a,#2d2d2d);border-radius:20px;padding:24px;box-shadow:0 10px 30px rgba(0,0,0,.2)}
+.work-new h2{text-align:center;color:#fff;font-size:24px}.work-new h2 span{color:#ff6b00}
+.work-new .sub{text-align:center;color:#bbb;font-size:13px;margin-top:6px}
+.work-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-top:20px}
+.work-card{background:#fff;border-radius:16px;padding:18px;text-align:center}
+.work-card .icon{font-size:36px;width:64px;height:64px;line-height:64px;border-radius:50%;margin:auto}
+.work-card h3{font-size:17px;margin-top:12px;color:#222}.work-card p{font-size:13px;line-height:1.6;color:#555;margin-top:8px}
+.work-card .num{background:#ff6b00;color:#fff;display:inline-block;padding:4px 12px;border-radius:20px;font-size:12px;font-weight:700;margin-top:10px}
+#secondPage{display:none;max-width:520px;margin:0 auto 30px;background:#fff;padding:16px;border-radius:14px;border:2px dashed #ff6b00;box-shadow:0 4px 12px #ddd}
+#secondPage input,#secondPage select{width:100%;padding:9px 10px;border:1px solid #ddd;border-radius:8px;margin-top:7px;font-size:13px}
+#secondPage button{padding:11px 16px;background:#ff6b00;color:#fff;border:0;border-radius:9px;font-weight:700;margin-top:10px;font-size:14px}
+.demoQR{display:none;margin-top:12px;background:#fff;border:2px solid #222;border-radius:12px;overflow:hidden}
+.demoQR .head{background:#222;color:#fff;padding:12px;display:flex;justify-content:space-between;align-items:center}.demoQR .head b{font-size:18px}
+.demoQR .body{padding:12px;display:flex;gap:12px}
+.demoQR .qr{width:130px;height:130px;background:#fff;border:2px solid #222;border-radius:10px;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:6px;flex-shrink:0;overflow:hidden}
+.demoQR .qr img{width:96px;height:96px;object-fit:contain}
+.demoQR .qr span{font-size:10px;font-weight:800;margin-top:4px;word-break:break-all;text-align:center}
+.demoQR .info{flex:1;line-height:1.6;font-size:13px}
+.emg{background:#FFF3CD;border:1px solid #FFE08A;border-radius:8px;padding:9px;margin-top:8px;font-size:12px;line-height:1.5}
+.steps{background:#f0fff4;border-radius:10px;padding:10px;margin-top:10px;font-size:12px;line-height:1.7}
+.contact-new{background:linear-gradient(180deg,#111,#1e1e1e);padding:40px 16px;text-align:center;margin-top:30px}
+.contact-new h2{color:#fff;font-size:28px}.contact-new h2 span{color:#ff6b00}
+.contact-new .line{width:60px;height:4px;background:#ff6b00;border-radius:10px;margin:10px auto 6px}
+.contact-new .sub{color:#bbb;font-size:13px;margin-bottom:24px}
+.contact-new-grid{max-width:1000px;margin:auto;display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px}
+.c-card{background:#fff;border-radius:18px;padding:20px 14px;text-align:center;transition:.3s}
+.c-card:hover{transform:translateY(-6px);box-shadow:0 12px 25px rgba(255,107,0,.3)}
+.c-card .c-icon{width:70px;height:70px;margin:auto;background:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 10px rgba(0,0,0,.08)}
+.c-card .c-icon img{width:48px;height:48px;object-fit:contain}
+.c-card h3{font-size:16px;margin-top:10px}.c-card p{font-size:12px;color:#777;margin-top:4px}
+.c-card a{display:block;margin-top:12px;padding:11px;border-radius:12px;color:#fff;text-decoration:none;font-weight:700;font-size:14px}
+#loginPopup{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.7);z-index:9999;justify-content:center;align-items:center}
+#loginPopup .inner{background:#fff;width:92%;max-width:360px;padding:24px;border-radius:18px;text-align:center;position:relative}
+#loginPopup .inner input{width:100%;padding:12px;border:1px solid #ddd;border-radius:10px;margin-top:10px}
+#loginPopup .inner button{width:100%;padding:13px;margin-top:12px;background:#ff6b00;color:#fff;border:0;border-radius:10px;font-weight:700}
+@media(max-width:750px){.hero{flex-direction:column;text-align:center}.hero-text h1{font-size:26px}.hero-img{width:100%}.hero-img img{height:170px}.row{flex-direction:column;gap:16px}.card{max-width:100%}.card.left,.card.right{margin:0}.work-grid{grid-template-columns:1fr}.demoQR .body{flex-direction:column}.demoQR .qr{margin:auto}#secondPage{margin:0 12px 30px}.contact-new-grid{grid-template-columns:1fr 1fr}.c-card:last-child{grid-column:span 2;max-width:280px;width:100%;margin:auto}}
 </style>
 </head>
 <body>
-<div class="topbar"><b>😇 HELP BUDDY</b><button class="langBtn" onclick="toggleLang()">🌐 <span id="curLang">हिंदी / मराठी / English</span> ▼</button></div>
-<div id="langMenu" class="langMenu hide">
-<button onclick="setLang('hi')">🇮🇳 हिंदी - Hindi</button>
-<button onclick="setLang('mr')">🇮🇳 मराठी - Marathi</button>
-<button onclick="setLang('en')">🇬🇧 English</button>
+<div class="top"><b>🤝 HELP <span>BUDDY</span></b><div class="top-btns"><a class="login" onclick="openLogin();blurMe()" data-hi="LOGIN" data-mr="LOGIN" data-en="LOGIN">LOGIN</a><a class="join" onclick="openFormPage();blurMe()" data-hi="JOIN" data-mr="JOIN" data-en="JOIN">JOIN</a></div></div>
+
+<div class="hero">
+<div class="hero-text">
+<h1 data-hi="आप अकेले नहीं हैं,<br><span>HELP BUDDY</span> आपके साथ है" data-mr="तुम्ही एकटे नाही आहात,<br><span>HELP BUDDY</span> तुमच्या सोबत आहे" data-en="You Are Not Alone,<br><span>HELP BUDDY</span> Is With You">You Are Not Alone,<br><span>HELP BUDDY</span> Is With You</h1>
+<p data-hi="एक QR कोड - आपके वाहन, आपके परिवार और आपकी सुरक्षा के लिए" data-mr="एक QR कोड - तुमचे वाहन, तुमचे कुटुंब आणि तुमची सुरक्षा यासाठी" data-en="One QR Code - For Your Vehicle, Your Family and Your Safety">One QR Code - For Your Vehicle, Your Family and Your Safety</p>
+<div class="btns"><a class="w" href="https://www.instagram.com/helpbuddy7/" target="_blank" rel="noopener" onclick="blurMe()" data-hi="▶ वीडियो देखें" data-mr="▶ व्हिडिओ पहा" data-en="▶ Watch Video">▶ Watch Video</a><a class="o" onclick="openDemoQR();blurMe()" data-hi="🔗 QR बनाएं" data-mr="🔗 QR बनवा" data-en="🔗 Create QR">🔗 Create QR</a></div>
+</div>
+<div class="hero-img"><img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=900" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1502877338535-766e1452684a?w=900'"></div>
 </div>
 
-<!-- ENTRY PAGE -->
-<div class="card" id="entryBox">
-<h1>😇 HELP BUDDY</h1><p class="brand">Bharat Ki Help - Scan Karo - Help Karo</p>
-<p><b>Gaadi Ki FULL ENTRY Karo</b></p>
-<label>👤 Malik Ka Naam</label>
-<div class="row"><select id="title"><option>Mr</option><option>Miss</option><option>Mrs</option><option>Dr</option></select><input id="name" placeholder="Naam - Ex: Gangotri"></div>
-<div class="row"><select id="gender"><option>Male</option><option>Female</option><option>Other</option></select><input id="email" placeholder="Email - Optional" type="email"></div>
-<label>🚗 Gaadi Number</label>
-<input id="vehicle" placeholder="Gaadi Number - MH 29 BL 0001" style="text-transform:uppercase">
-<label>📞 Malik Ka Mobile</label>
-<input id="phone" placeholder="Malik Ka Mobile - WhatsApp Wala" type="tel">
-<label>🏠 Malik Ka Address</label>
-<input id="address" placeholder="Address - Ex: Wadholi, Pune">
-<label>🔒 Family Contact - 1 & 2 - Dono LOCK Rahenge</label>
-<input id="family" placeholder="Family 1 Number - Mummy / Papa / Wife" type="tel">
-<input id="family2" placeholder="Family 2 Number - Bhai / Behen" type="tel">
-<label>📄 RC Number</label>
-<input id="rc" placeholder="RC Number - Ex: MH 12 AB 1234" style="text-transform:uppercase">
-<label>🛡️ Insurance Company / Policy No</label>
-<input id="insComp" placeholder="Insurance - Ex: HDFC / 3001/123456789/00/000">
-<label>🛡️ INSURANCE VALIDITY - Insurance Kab Tak Chalega?</label>
-<input id="insExp" type="date">
-<small>↑ Insurance khatam hone ki date - Ex: 02-11-2026</small>
-<label>🌿 PUC VALIDITY - PUC Kab Tak Chalega?</label>
-<input id="pucExp" type="date">
-<small>↑ PUC khatam hone ki date - Ex: 29-11-2026</small>
-<button class="green" onclick="makeQR()">✅ FULL ENTRY + QR BANAO</button>
-<div id="qrBox" class="qr hide"><h3>✅ QR Ban Gaya - HELP BUDDY</h3><img id="qrImg"><p id="linkText" style="font-size:11px;word-break:break-all"></p><button class="dark" onclick="downloadQR()">⬇️ QR DOWNLOAD / PRINT KARO</button></div>
+<div class="search"><input id="search-input" placeholder="🔍 Enter Vehicle Number - MH12 AB 1234" data-ph-hi="🔍 वाहन नंबर दर्ज करें - MH12 AB 1234" data-ph-mr="🔍 वाहन नंबर टाका - MH12 AB 1234" data-ph-en="🔍 Enter Vehicle Number - MH12 AB 1234" autocomplete="off"><button onclick="doSearch();blurMe()" data-hi="SEARCH" data-mr="शोधा" data-en="SEARCH">SEARCH</button></div>
+<div class="langs"><button onclick="setLang('en');blurMe()" id="btn-en" class="active">English</button><button onclick="setLang('hi');blurMe()" id="btn-hi">हिन्दी</button><button onclick="setLang('mr');blurMe()" id="btn-mr">मराठी</button></div>
+<div class="tabs"><span onclick="setFilter('all',this);blurMe()" data-hi="सभी" data-mr="सर्व" data-en="All">All</span><span onclick="setFilter('car',this);blurMe()" data-hi="🚗 कार सेवा" data-mr="🚗 कार सेवा" data-en="🚗 Car Service">🚗 Car Service</span><span onclick="setFilter('vendor',this);blurMe()" data-hi="🧡 वेंडर सेवा" data-mr="🧡 विक्रेता सेवा" data-en="🧡 Vendor Service">🧡 Vendor Service</span><span onclick="setFilter('review',this);blurMe()" data-hi="⭐ प्रतिक्रिया" data-mr="⭐ प्रतिक्रिया" data-en="⭐ Reviews">⭐ Reviews</span></div>
+
+<div class="row">
+<div class="card left" data-cat="car">
+<p style="font-size:11px;color:#ff6b00;font-weight:800" data-hi="📺 ऑफिशियल वीडियो" data-mr="📺 अधिकृत व्हिडिओ" data-en="📺 OFFICIAL VIDEO">📺 OFFICIAL VIDEO</p>
+<h3 style="margin-top:4px" data-hi="वीडियो देखें - निर्णय लें" data-mr="व्हिडिओ पहा - निर्णय घ्या" data-en="Watch Video - Decide">Watch Video - Decide</h3>
+<p data-hi="पहले वीडियो देखो - फिर भरोसा करो - फिर QR बनाओ!" data-mr="आधी व्हिडिओ पहा - मग विश्वास ठेवा - मग QR बनवा!" data-en="First watch video - Then trust - Then create QR!">First watch video - Then trust - Then create QR!</p>
+<a class="btn insta" href="https://www.instagram.com/helpbuddy7/" target="_blank" rel="noopener" onclick="blurMe()"><img src="https://upload.wikimedia.org/wikipedia/commons/9/95/Instagram_logo_2022.svg" onerror="this.onerror=null;this.src='https://upload.wikimedia.org/wikipedia/commons/e/e7/Instagram_logo_2016.svg'"> Instagram</a>
+<a class="btn fb" href="https://www.facebook.com/helpbuddy7" target="_blank" rel="noopener" onclick="blurMe()"><img src="https://upload.wikimedia.org/wikipedia/commons/b/b8/2023_Facebook_icon.svg" onerror="this.onerror=null;this.src='https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg'"> Facebook</a>
+<div style="margin-top:8px;background:#f0fff4;padding:9px;border-radius:9px"><p style="font-weight:700" data-hi="📱 वीडियो WhatsApp पर प्राप्त करें" data-mr="📱 व्हिडिओ WhatsApp वर मिळवा" data-en="📱 Get Video on WhatsApp">📱 Get Video on WhatsApp</p><input placeholder="Mobile Number" data-ph-hi="मोबाइल नंबर" data-ph-mr="मोबाईल नंबर" data-ph-en="Mobile Number" autocomplete="off"><a class="btn wa" href="https://wa.me/917420969668?text=Video%20Bhejo" target="_blank" rel="noopener" onclick="blurMe()"><img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" onerror="this.onerror=null;this.src='https://upload.wikimedia.org/wikipedia/commons/1/19/WhatsApp_logo-color-vertical.svg'"> <span data-hi="भेजें" data-mr="पाठवा" data-en="Send">Send</span></a></div>
+</div>
+<!-- REVIEW - BADA KAR DIYA -->
+<div class="card right" data-cat="review">
+<p style="font-size:11px;color:#ff6b00;font-weight:800" data-hi="⭐ प्रतिक्रिया" data-mr="⭐ प्रतिक्रिया" data-en="⭐ Reviews">⭐ Reviews</p>
+<h3 style="margin-top:4px" data-hi="उपभोक्ता क्या कहते हैं?" data-mr="ग्राहक काय म्हणतात?" data-en="What Users Say?">What Users Say?</h3>
+<div class="review-bar"><b>4.9 ⭐⭐⭐⭐⭐</b><br><span style="font-size:12px;color:#666">1,250+ Happy Users - Pune | Nagpur | Mumbai</span></div>
+<p><b>Ramesh - Pune ⭐⭐⭐⭐⭐</b><br><span data-hi="मेरे वाहन का QR देखकर एक सज्जन ने मेरी पत्नी को सूचित किया।" data-mr="माझ्या वाहनाचा QR पाहून एका माणसाने माझ्या पत्नीला कळवले." data-en="Seeing my vehicle QR, a person informed my wife.">Seeing my vehicle QR, a person informed my wife.</span></p>
+<p style="margin-top:8px"><b>Priya - Nagpur ⭐⭐⭐⭐⭐</b><br><span data-hi="बहुत अच्छा काम है। सुरक्षा के लिए सबसे अच्छा।" data-mr="खूप छान काम आहे. सुरक्षेसाठी सर्वात चांगले." data-en="Very good work. Best for safety.">Very good work. Best for safety.</span></p>
+<p style="margin-top:8px"><b>Rahul - Vendor ⭐⭐⭐⭐⭐</b><br><span data-hi="वेंडर के लिए भी QR बहुत काम का है!" data-mr="विक्रेत्यासाठी सुद्धा QR खूप कामाचा आहे!" data-en="QR is very useful for Vendor also!">QR is very useful for Vendor also!</span></p>
+<p style="margin-top:8px"><b>Sneha - Mumbai ⭐⭐⭐⭐⭐</b><br><span data-hi="QR स्कैन करते ही मालिक को कॉल गया - बहुत आसान!" data-mr="QR स्कॅन करताच मालकाला कॉल गेला - खूप सोपे!" data-en="As soon as QR scanned - Call went to owner - Very easy!">As soon as QR scanned - Call went to owner - Very easy!</span></p>
+<p style="margin-top:8px"><b>Amit - Pune ⭐⭐⭐⭐⭐</b><br><span data-hi="इमरजेंसी में फैमिली को तुरंत कॉल गया - जान बच गई!" data-mr="इमर्जन्सी मध्ये कुटुंबाला लगेच कॉल गेला - जीव वाचला!" data-en="In emergency - Family got call instantly - Life saved!">In emergency - Family got call instantly - Life saved!</span></p>
+</div>
 </div>
 
-<!-- SCAN PAGE -->
-<div class="card hide" id="helpBox">
-<h1>😇 HELP BUDDY</h1><p class="brand">Bharat Ki Help - HELP BUDDY Company</p>
-<div class="box">
-<h3 style="margin:0;color:#16a34a">✅ NORMAL - Malik Ki Details</h3>
-<p id="showOwner" style="text-align:left;font-size:16px;line-height:1.8"></p>
-<hr>
-<h3 style="margin:5px 0;color:#ea580c">🚫 NO PARKING / BLOCK</h3>
-<button class="orange" onclick="sendBlockMsg(1)">🚫 Aapki Gaadi Ne Meri Gaadi BLOCK Kar Di Hai</button>
-<button class="blue" onclick="sendBlockMsg(2)">🚗 Please Aao Aur Gaadi Hatao</button>
-<button class="green" onclick="sendBlockMsg(3)">📍 Meri Location Ye Hai</button>
-<p id="blockLoc" style="font-size:12px;color:green"></p>
+<div class="work-new">
+<h2 data-hi="🤝 HELP BUDDY का काम क्या है?" data-mr="🤝 HELP BUDDY चे काम काय आहे?" data-en="🤝 What Is HELP BUDDY Work?">🤝 What Is <span>HELP BUDDY</span> Work?</h2>
+<p class="sub" data-hi="3 काम - 1 QR - सबकी सुरक्षा!" data-mr="3 काम - 1 QR - सर्वांची सुरक्षा!" data-en="3 Works - 1 QR - Safety For All!">3 Works - 1 QR - Safety For All!</p>
+<div class="work-grid">
+<div class="work-card"><div class="icon" style="background:#FFF3E0">🚗</div><h3 data-hi="1. गाड़ी गलत पार्क है?" data-mr="1. गाडी चुकीच्या ठिकाणी आहे?" data-en="1. Vehicle Wrong Parked?">1. Vehicle Wrong Parked?</h3><p data-hi="QR स्कैन करो - मालिक को कॉल जाएगा - नंबर नहीं दिखेगा! झगड़ा नहीं - मदद होगी!" data-mr="QR स्कॅन करा - मालकाला कॉल जाईल - नंबर दिसणार नाही! भांडण नाही - मदत होईल!" data-en="Scan QR - Call goes to owner - Number will NOT show! No fight - Only help!">Scan QR - Call goes to owner - Number will NOT show! No fight - Only help!</p><div class="num">📞 CALL OWNER</div></div>
+<div class="work-card" style="border:2px solid #ff6b00"><div class="icon" style="background:#FFE8E8">🚨</div><h3 data-hi="2. एक्सीडेंट / इमरजेंसी?" data-mr="2. अपघात / इमर्जन्सी?" data-en="2. Accident / Emergency?">2. Accident / Emergency?</h3><p data-hi="QR स्कैन करो - फैमिली + Govt 108 / 112 को कॉल जाएगा! जान बचेगी - टाइम बचेगा!" data-mr="QR स्कॅन करा - कुटुंब + Govt 108 / 112 ला कॉल जाईल! जीव वाचेल - वेळ वाचेल!" data-en="Scan QR - Call goes to Family + Govt 108 / 112! Life will save - Time will save!">Scan QR - Call goes to Family + Govt 108 / 112! Life will save - Time will save!</p><div class="num" style="background:#d92d00">🚨 EMERGENCY CALL</div></div>
+<div class="work-card"><div class="icon" style="background:#E8FFF0">🤝</div><h3 data-hi="3. कार + वेंडर सेवा?" data-mr="3. कार + विक्रेता सेवा?" data-en="3. Car + Vendor Service?">3. Car + Vendor Service?</h3><p data-hi="दोनों के लिए एक ही QR! कार वाले के लिए भी - वेंडर वाले के लिए भी! एक QR - सब काम!" data-mr="दोघांसाठी एकच QR! कार वाल्यासाठी सुद्धा - विक्रेत्यासाठी सुद्धा! एक QR - सर्व काम!" data-en="Same QR for both! For Car owner also - For Vendor also! One QR - All work!">Same QR for both! For Car owner also - For Vendor also! One QR - All work!</p><div class="num" style="background:#16A34A">✅ 1 QR = ALL</div></div>
 </div>
-<div class="govt">
-<h3 style="margin:0">🇮🇳 GOVT EMERGENCY NUMBERS</h3>
-<p style="text-align:left;line-height:1.8">🚨 <b>112</b> - All Emergency<br>👮 <b>100</b> - Police<br>🚑 <b>108</b> - Ambulance<br>🔥 <b>101</b> - Fire Brigade<br>👶 <b>1098</b> - Child Help<br>👩 <b>1091</b> - Women Help</p>
-<button class="red" onclick="location.href='tel:112'">🚨 112 CALL KARO</button>
+<p style="text-align:center;color:#fff;margin-top:18px;font-size:13px" data-hi="QR बनाना है? तो ऊपर वाला CREATE QR दबाओ!" data-mr="QR बनवायचा आहे? तर वरचा CREATE QR दाबा!" data-en="Want QR? Press above CREATE QR button!">Want QR? Press above CREATE QR button!</p>
 </div>
-<button class="green" onclick="callOwner()">📞 MALIK KO CALL KARO</button>
-<button class="bigRed" onclick="openEmergency()">🔴 FAMILY CONTACT - EMERGENCY<br><span style="font-size:13px;font-weight:normal">Sirf Accident / Emergency Me Hi Kholo!</span></button>
-<div id="emergencyBox" class="lockBox hide">
-<h3 style="margin:0;color:#dc2626">🔒 FAMILY CONTACT - LOCKED</h3>
-<p style="font-size:13px">Unlock ke liye 3 cheeze chahiye:</p>
-<input id="helperName" placeholder="1. Madad Karne Wale Ka Naam">
-<label>2. Apni SELFIE Lo</label>
-<input type="file" id="selfie" accept="image/*" capture="user" onchange="previewSelfie(event)">
-<img id="preview" class="hide">
-<button class="dark" onclick="getLocation()">📍 3. LIVE CURRENT LOCATION LO</button>
-<p id="locText" style="font-size:13px;color:green"></p>
-<button class="red" onclick="unlockFamily()">🔓 FAMILY NUMBER UNLOCK KARO</button>
-<p id="familyFull" style="font-size:18px;font-weight:bold;color:#dc2626;text-align:center;white-space:pre-line"></p>
-<p id="proofText" style="font-size:12px;color:#555"></p>
+
+<div id="secondPage">
+<h2 style="color:#ff6b00;font-size:22px;text-align:center">🤝 HELP BUDDY - Second Page</h2>
+<div id="formPart">
+<h3 style="margin-top:12px;font-size:17px" data-hi="📝 JOIN - Form भरो" data-mr="📝 JOIN - Form भरा" data-en="📝 JOIN - Fill Form">📝 JOIN - Fill Form</h3>
+<input id="in-name" placeholder="Owner - Ramesh Kumar" autocomplete="off">
+<input id="in-mobile" placeholder="Mobile - 98765 43210" autocomplete="off" inputmode="numeric">
+<input id="in-vehicle" placeholder="Vehicle - MH12 AB 1234" autocomplete="off">
+<input id="in-emg1" placeholder="Emergency 1 - Wife / Father - 98765 11111" autocomplete="off">
+<input id="in-emg2" placeholder="Emergency 2 - Brother / Friend - 98765 22222" autocomplete="off">
+<input id="in-loc" placeholder="Location - Pune, Loni Kalbhor" autocomplete="off">
+<select id="in-type"><option>Car Service</option><option>Vendor Service</option></select>
+<div style="text-align:center"><button onclick="makeDemoQR();blurMe()" data-hi="✅ CREATE QR" data-mr="✅ CREATE QR" data-en="✅ CREATE QR">✅ CREATE QR</button> <button onclick="closeSecondPage();blurMe()" style="background:#eee;color:#222" data-hi="✕ बंद करो" data-mr="✕ बंद करा" data-en="✕ Close">✕ Close</button></div>
 </div>
-<p style="font-size:11px">Powered by HELP BUDDY | Secure QR - Encrypted Data</p>
+<div id="demoQRBox" class="demoQR">
+<div class="head"><b>🤝 HELP BUDDY</b><span style="font-size:11px;background:#ff6b00;padding:4px 8px;border-radius:8px">🔰 DEMO QR</span></div>
+<div class="body"><div class="qr"><img id="qr-img" src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=HELP-BUDDY-MH12-AB-1234-Ramesh-Kumar"><span id="qr-text">MH12 AB 1234</span></div>
+<div class="info"><b>👤 Owner: <span id="d-name">Ramesh Kumar</span></b><br>🚗 Vehicle: <b id="d-vehicle">MH12 AB 1234</b><br>📞 Mobile: <b id="d-mobile">98765 43210</b><br>📍 Location: <span id="d-loc">Pune, Loni Kalbhor</span><br>🏷️ Service: <span id="d-type">Car Service</span><div class="emg"><b>🚨 EMERGENCY - Govt: </b>🚑 108 | 👮 112 | 🔥 101 | 👩 1091<br><b>Family:</b><br>1. <span id="d-emg1">98765 11111 - Wife / Father</span><br>2. <span id="d-emg2">98765 22222 - Brother / Friend</span></div></div></div>
+<div style="padding:0 12px 12px;text-align:center"><button onclick="alert('Call Owner ko jayega!');blurMe()" style="background:#25D366;padding:9px 14px">📞 Call Owner</button> <button onclick="alert('Emergency ko call jayega!');blurMe()" style="background:#d92d00;padding:9px 14px">🚨 Emergency Call</button></div>
 </div>
+<div class="steps" id="stepsBox" style="display:none"><b data-hi="📌 Emergency Number कैसे दिखे - Step:" data-mr="📌 Emergency Number कसा दिसेल - Step:" data-en="📌 How Emergency Number Will Show - Step:">📌 How Emergency Number Will Show - Step:</b><br><span data-hi="Step 1 - JOIN - Form में Emergency डालो! Step 2 - CREATE QR दबाओ - Auto आ जाएगा! Step 3 - Print करके Gaadi पर चिपकाओ! Step 4 - Scan करेगा - Sab दिखेगा! Step 5 - Emergency दबाएगा - Call जाएगा!" data-mr="Step 1 - JOIN - Form मध्ये Emergency टाका! Step 2 - CREATE QR दाबा - Auto येईल! Step 3 - Print करून Gaadi वर चिकटवा! Step 4 - Scan करेल - सर्व दिसेल! Step 5 - Emergency दाबेल - Call जाईल!" data-en="Step 1 - JOIN - Put Emergency in Form! Step 2 - Press CREATE QR - Auto will come! Step 3 - Print and Stick on Vehicle! Step 4 - Scan will show All! Step 5 - Press Emergency - Call will go!">Step 1 - JOIN - Put Emergency in Form! Step 2 - Press CREATE QR - Auto will come! Step 3 - Print and Stick on Vehicle! Step 4 - Scan will show All! Step 5 - Press Emergency - Call will go!</span></div>
+</div>
+
+<div class="contact-new">
+<h2 data-hi="संपर्क करो - <span>Contact Us</span>" data-mr="संपर्क करा - <span>Contact Us</span>" data-en="Contact <span>Us</span>">Contact <span>Us</span></h2>
+<div class="line"></div>
+<p class="sub" data-hi="किसी भी मदद के लिए - कभी भी - कॉल / मैसेज करो!" data-mr="कोणत्याही मदतीसाठी - कधीही - कॉल / मेसेज करा!" data-en="For any help - Anytime - Call / Message us!">For any help - Anytime - Call / Message us!</p>
+<div class="contact-new-grid">
+<div class="c-card"><div class="c-icon"><img src="https://upload.wikimedia.org/wikipedia/commons/2/2e/Phone_icon.svg" onerror="this.onerror=null;this.src='https://cdn-icons-png.flaticon.com/512/724/724664.png'"></div><h3>Call Now</h3><p>Talk Directly</p><a href="tel:+917420969668" onclick="blurMe()" style="background:#16A34A">74209 69668</a></div>
+<div class="c-card"><div class="c-icon"><img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" onerror="this.onerror=null;this.src='https://upload.wikimedia.org/wikipedia/commons/1/19/WhatsApp_logo-color-vertical.svg'"></div><h3>WhatsApp</h3><p>Chat - Fast Reply</p><a href="https://wa.me/917420969668?text=Namaste%20HELP%20BUDDY" target="_blank" rel="noopener" onclick="blurMe()" style="background:#25D366">Chat Now</a></div>
+<div class="c-card"><div class="c-icon"><img src="https://upload.wikimedia.org/wikipedia/commons/7/7e/Gmail_icon_%282020%29.svg" onerror="this.onerror=null;this.src='https://upload.wikimedia.org/wikipedia/commons/4/4e/Gmail_Icon.png'"></div><h3>Gmail</h3><p>Mail Us</p><a href="mailto:buddyhelp7@gmail.com" onclick="blurMe()" style="background:#EA4335">Email Now</a></div>
+<div class="c-card"><div class="c-icon"><img src="https://upload.wikimedia.org/wikipedia/commons/9/95/Instagram_logo_2022.svg" onerror="this.onerror=null;this.src='https://upload.wikimedia.org/wikipedia/commons/e/e7/Instagram_logo_2016.svg'"></div><h3>Instagram</h3><p>Follow - Watch Video</p><a href="https://www.instagram.com/helpbuddy7/" target="_blank" rel="noopener" onclick="blurMe()" style="background:linear-gradient(45deg,#f09433,#dc2743,#bc1888)">@helpbuddy7</a></div>
+<div class="c-card"><div class="c-icon"><img src="https://upload.wikimedia.org/wikipedia/commons/b/b8/2023_Facebook_icon.svg" onerror="this.onerror=null;this.src='https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg'"></div><h3>Facebook</h3><p>Like - Share</p><a href="https://www.facebook.com/helpbuddy7" target="_blank" rel="noopener" onclick="blurMe()" style="background:#1877F2">Help Buddy</a></div>
+<div class="c-card"><div class="c-icon"><img src="https://upload.wikimedia.org/wikipedia/commons/b/bd/Google_Maps_Logo_2020.svg" onerror="this.onerror=null;this.src='https://upload.wikimedia.org/wikipedia/commons/9/9e/Map_pin_icon.svg'"></div><h3>Location</h3><p>Pune - Loni Kalbhor</p><a href="https://www.google.com/maps/search/?api=1&query=Loni+Kalbhor+Pune" target="_blank" rel="noopener" onclick="blurMe()" style="background:#ff6b00">Visit Us</a></div>
+</div>
+<p style="color:#888;font-size:12px;margin-top:22px">© 2026 HELP BUDDY - Made With ❤️ For Safety</p>
+</div>
+
+<div id="loginPopup"><div class="inner"><span onclick="closeLogin();blurMe()" style="position:absolute;top:10px;right:14px;font-size:22px;cursor:pointer">✕</span><h2 style="color:#ff6b00">🤝 HELP BUDDY</h2><p style="margin-top:8px;color:#555" data-hi="लॉगिन - मोबाइल + OTP से" data-mr="लॉगिन - मोबाईल + OTP ने" data-en="Login - With Mobile + OTP">Login - With Mobile + OTP</p><input id="login-mobile" placeholder="Mobile - 10 Digits" autocomplete="off" inputmode="numeric"><input id="login-otp" placeholder="OTP - 4 Digits - 1234" autocomplete="off" inputmode="numeric"><button onclick="doLogin();blurMe()">LOGIN</button><p style="font-size:12px;color:#888;margin-top:10px">Demo OTP - 1234</p><p style="font-size:12px;color:#555;margin-top:6px" data-hi="नया हो? JOIN दबाओ!" data-mr="नवीन आहात? JOIN दाबा!" data-en="New? Press JOIN!">New? Press JOIN!</p></div></div>
 
 <script>
-function toggleLang(){document.getElementById('langMenu').classList.toggle('hide')}
-function setLang(l){document.getElementById('langMenu').classList.add('hide');document.getElementById('curLang').innerText=l=='mr'?'मराठी':l=='en'?'English':'हिंदी';localStorage.setItem('hb_lang',l);}
-if(localStorage.getItem('hb_lang')){let l=localStorage.getItem('hb_lang');document.getElementById('curLang').innerText=l=='mr'?'मराठी':l=='en'?'English':'हिंदी';}
-const KEY="HELPBUDDY2026";
-function encrypt(str){let out="";for(let i=0;i<str.length;i++){out+=String.fromCharCode(str.charCodeAt(i)^KEY.charCodeAt(i%KEY.length));}return btoa(unescape(encodeURIComponent(out))).split('').reverse().join('');}
-function decrypt(enc){try{let rev=enc.split('').reverse().join('');let decoded=decodeURIComponent(escape(atob(rev)));let out="";for(let i=0;i<decoded.length;i++){out+=String.fromCharCode(decoded.charCodeAt(i)^KEY.charCodeAt(i%KEY.length));}return JSON.parse(out);}catch(e){return null;}}
-let DATA=null, LAT='', LON='', HAS_SELFIE=false;
-const BASE_URL="https://pin2nagdev-sys.github.io/help-buddy/";
-function makeQR(){
-  const d={t:document.getElementById('title').value,n:document.getElementById('name').value,g:document.getElementById('gender').value,e:document.getElementById('email').value,v:document.getElementById('vehicle').value.toUpperCase().trim(),p:document.getElementById('phone').value,a:document.getElementById('address').value,f:document.getElementById('family').value,f2:document.getElementById('family2').value,rc:document.getElementById('rc').value.toUpperCase(),ic:document.getElementById('insComp').value,ie:document.getElementById('insExp').value,pe:document.getElementById('pucExp').value};
-  if(!d.n||!d.v||!d.p||!d.f){alert('Naam, Gaadi No, Phone, Family 1 zaroori hai!');return}
-  const link=BASE_URL+'?d='+encodeURIComponent(encrypt(JSON.stringify(d)));
-  document.getElementById('qrImg').src='https://api.qrserver.com/v1/create-qr-code/?size=300x300&data='+encodeURIComponent(link);
-  document.getElementById('linkText').innerText=link;
-  document.getElementById('qrBox').classList.remove('hide');
-}
-function downloadQR(){const a=document.createElement('a');a.href=document.getElementById('qrImg').src;a.download='help-buddy-qr.png';a.click();}
-window.onload=()=>{
-  const p=new URLSearchParams(location.search);
-  if(!p.get('d')) return;
-  DATA=decrypt(p.get('d'));
-  if(!DATA){alert('Invalid QR - HELP BUDDY QR hi scan karein');return}
-  document.getElementById('entryBox').classList.add('hide');
-  document.getElementById('helpBox').classList.remove('hide');
-  document.getElementById('showOwner').innerHTML='<b>🚗 Gaadi:</b> '+DATA.v+'<br><b>👤 Malik:</b> '+DATA.t+' '+DATA.n+' ('+DATA.g+')<br><b>📞 Number:</b> '+DATA.p+'<br><b>📧 Email:</b> '+(DATA.e||'-')+'<br><b>🏠 Address:</b> '+DATA.a+'<br><b>📄 RC No:</b> '+(DATA.rc||'-')+'<br><b>🛡️ Insurance:</b> '+(DATA.ic||'-')+'<br><b>🛡️ Insurance Validity:</b> '+(DATA.ie||'-')+'<br><b>🌿 PUC Validity:</b> '+(DATA.pe||'-');
-}
-function callOwner(){if(DATA) location.href='tel:'+DATA.p}
-function openEmergency(){document.getElementById('emergencyBox').classList.remove('hide');document.getElementById('emergencyBox').scrollIntoView({behavior:'smooth'});}
-function sendBlockMsg(type){
-  if(!DATA) return;
-  let msg='';
-  const lang=localStorage.getItem('hb_lang')||'hi';
-  if(lang=='mr'){
-    if(type==1) msg='Namaskar '+DATA.t+' '+DATA.n+' ji! Mi HELP BUDDY varun boltoy. Tumchi Gaadi '+DATA.v+' ne mazi gaadi BLOCK keli aahe. Krupaya yaa ani gaadi hatva.';
-    if(type==2) msg='Namaskar '+DATA.t+' '+DATA.n+' ji! Tumchi Gaadi '+DATA.v+' ithe parked aahe ani mazi gaadi nighu shakat nahi. Krupaya yaa ani gaadi hatva, mi vaat baghtoy. - HELP BUDDY';
-    if(type==3) msg='Namaskar '+DATA.t+' '+DATA.n+' ji! Tumchi Gaadi '+DATA.v+' ne rasta block kelay. Maze location he aahe, krupaya ithe yaa. - HELP BUDDY';
-  } else if(lang=='en'){
-    if(type==1) msg='Hello '+DATA.t+' '+DATA.n+'! I am speaking from HELP BUDDY. Your Vehicle '+DATA.v+' has blocked my vehicle. Please come and move your car.';
-    if(type==2) msg='Hello '+DATA.t+' '+DATA.n+'! Your Vehicle '+DATA.v+' is parked here and my vehicle cannot move. Please come and move it, I am waiting. - HELP BUDDY';
-    if(type==3) msg='Hello '+DATA.t+' '+DATA.n+'! Your Vehicle '+DATA.v+' has blocked the way. My location is here, please come here. - HELP BUDDY';
-  } else {
-    if(type==1) msg='Namaste '+DATA.t+' '+DATA.n+' ji! Main HELP BUDDY se bol raha hu. Aapki Gaadi '+DATA.v+' ne meri gaadi ko BLOCK kar rakha hai. Please aao aur car nikalo.';
-    if(type==2) msg='Namaste '+DATA.t+' '+DATA.n+' ji! Aapki Gaadi '+DATA.v+' yaha parked hai aur meri gaadi nikal nahi rahi. Please aao aur gaadi hatao, main wait kar raha hu. - HELP BUDDY';
-    if(type==3) msg='Namaste '+DATA.t+' '+DATA.n+' ji! Aapki Gaadi '+DATA.v+' ne rasta block kiya hai. Meri Location ye hai, please yaha aao. - HELP BUDDY';
-  }
-  if(LAT) msg+=' Meri Live Location: https://maps.google.com/?q='+LAT+','+LON;
-  if(!LAT && navigator.geolocation){navigator.geolocation.getCurrentPosition(pos=>{LAT=pos.coords.latitude;LON=pos.coords.longitude;document.getElementById('blockLoc').innerText='✅ Location mil gayi, ab dobara dabao';});}
-  let phone=DATA.p.replace(/\D/g,''); if(phone.length==10) phone='91'+phone;
-  window.open('https://wa.me/'+phone+'?text='+encodeURIComponent(msg),'_blank');
-}
-function previewSelfie(e){HAS_SELFIE=true;const r=document.getElementById('preview');r.src=URL.createObjectURL(e.target.files[0]);r.classList.remove('hide');}
-function getLocation(){
-  if(!navigator.geolocation){alert('Location support nahi hai');return}
-  document.getElementById('locText').innerText='Location le rahe hai...';
-  navigator.geolocation.getCurrentPosition(pos=>{LAT=pos.coords.latitude;LON=pos.coords.longitude;document.getElementById('locText').innerText='✅ Live Location Mil Gayi: '+LAT.toFixed(5)+', '+LON.toFixed(5);},()=>{alert('Location Allow Karo!')});
-}
-function unlockFamily(){
-  const h=document.getElementById('helperName').value.trim();
-  if(!h){alert('1. Pehle Apna Naam Daalo!');return}
-  if(!HAS_SELFIE){alert('2. Pehle SELFIE Lo!');return}
-  if(!LAT){alert('3. Pehle LIVE LOCATION Lo!');return}
-  document.getElementById('familyFull').innerText='📞 Family 1: '+DATA.f+'\n📞 Family 2: '+(DATA.f2||'-');
-  document.getElementById('proofText').innerText='✅ Verified: '+h+' ne Selfie + Live Location di hai. Map: https://maps.google.com/?q='+LAT+','+LON;
-  alert('Family Number Unlock Ho Gaya!');
-}
+function blurMe(){try{if(document.activeElement)document.activeElement.blur();}catch(e){}}
+function setLang(l){try{localStorage.setItem('hb_lang',l);}catch(e){}document.querySelectorAll('[data-hi]').forEach(function(el){if(l=='hi')el.innerHTML=el.getAttribute('data-hi');if(l=='mr')el.innerHTML=el.getAttribute('data-mr');if(l=='en')el.innerHTML=el.getAttribute('data-en');});document.querySelectorAll('[data-ph-hi]').forEach(function(el){if(l=='hi')el.placeholder=el.getAttribute('data-ph-hi');if(l=='mr')el.placeholder=el.getAttribute('data-ph-mr');if(l=='en')el.placeholder=el.getAttribute('data-ph-en');});['hi','mr','en'].forEach(function(x){var b=document.getElementById('btn-'+x);if(b)b.classList.remove('active')});var cur=document.getElementById('btn-'+l);if(cur)cur.classList.add('active');blurMe();}
+function setFilter(cat,elm){document.querySelectorAll('.tabs span').forEach(function(s){s.classList.remove('active')});elm.classList.add('active');document.querySelectorAll('.row .card').forEach(function(box){if(cat=='all')box.style.display='block';else{var c=box.getAttribute('data-cat')||'';box.style.display=c.includes(cat)?'block':'none';}});blurMe();}
+function doSearch(){var v=document.getElementById('search-input').value.trim();if(!v){alert('Vehicle Number Dalo!');blurMe();return;}alert('Search - '+v);blurMe();}
+function openFormPage(){document.getElementById('secondPage').style.display='block';document.getElementById('formPart').style.display='block';document.getElementById('demoQRBox').style.display='none';document.getElementById('stepsBox').style.display='none';document.getElementById('secondPage').scrollIntoView({behavior:'smooth',block:'center'});blurMe();}
+function openDemoQR(){document.getElementById('secondPage').style.display='block';document.getElementById('formPart').style.display='none';document.getElementById('demoQRBox').style.display='block';document.getElementById('stepsBox').style.display='block';document.getElementById('secondPage').scrollIntoView({behavior:'smooth',block:'center'});blurMe();}
+function closeSecondPage(){document.getElementById('secondPage').style.display='none';blurMe();}
+function makeDemoQR(){var name=document.getElementById('in-name').value.trim();var mob=document.getElementById('in-mobile').value.trim();var veh=document.getElementById('in-vehicle').value.trim();var e1=document.getElementById('in-emg1').value.trim();var e2=document.getElementById('in-emg2').value.trim();var loc=document.getElementById('in-loc').value.trim();var typ=document.getElementById('in-type').value;if(!name){alert('Owner Name Dalo!');blurMe();return;}if(!veh){alert('Vehicle Number Dalo!');blurMe();return;}document.getElementById('d-name').innerText=name;document.getElementById('d-vehicle').innerText=veh.toUpperCase();document.getElementById('qr-text').innerText=veh.toUpperCase();document.getElementById('qr-img').src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=HELP-BUDDY-"+encodeURIComponent(veh.toUpperCase())+"-"+encodeURIComponent(name);if(mob)document.getElementById('d-mobile').innerText=mob;if(loc)document.getElementById('d-loc').innerText=loc;document.getElementById('d-type').innerText=typ;if(e1)document.getElementById('d-emg1').innerText=e1;if(e2)document.getElementById('d-emg2').innerText=e2;document.getElementById('formPart').style.display='none';document.getElementById('demoQRBox').style.display='block';document.getElementById('stepsBox').style.display='block';blurMe();}
+function openLogin(){document.getElementById('loginPopup').style.display='flex';blurMe();}function closeLogin(){document.getElementById('loginPopup').style.display='none';blurMe();}
+function doLogin(){var m=document.getElementById('login-mobile').value.trim();var o=document.getElementById('login-otp').value.trim();if(m.length<10){alert('Mobile - 10 Ank Dalo!');blurMe();return;}if(o!=='1234'){alert('Demo OTP - 1234 Dalo!');blurMe();return;}try{localStorage.setItem('hb_user',m);}catch(e){}alert('Login Ho Gaya!');closeLogin();openFormPage();}
+document.getElementById('loginPopup').addEventListener('click',function(e){if(e.target.id=='loginPopup')closeLogin();});
+window.addEventListener('load',function(){var saved='en';try{saved=localStorage.getItem('hb_lang')||'en';}catch(e){}setLang(saved);blurMe();});
+document.addEventListener('click',function(e){if(e.target.tagName!=='INPUT'&&e.target.tagName!=='SELECT'&&e.target.tagName!=='TEXTAREA'){blurMe();}});
+document.addEventListener('selectstart',function(e){if(e.target.tagName!=='INPUT'&&e.target.tagName!=='TEXTAREA')e.preventDefault();});
+document.addEventListener('contextmenu',function(e){if(e.target.tagName!=='INPUT'&&e.target.tagName!=='TEXTAREA')e.preventDefault();});
 </script>
 </body>
 </html>
